@@ -1,0 +1,84 @@
+import React, { useEffect, useState } from 'react'
+import AnatherUser from './AnatherUser'
+import Table from 'react-bootstrap/Table';
+const User = () => {
+  const users = [
+    {
+      name: 'Anil', email: 'anil@test.com', address: [
+        { hm: '101', city: 'Noida', country: 'India' },
+        { hm: '10', city: 'Gurgaon', country: 'India' },
+        { hm: '23', city: 'Noida', country: 'India' },
+        { hm: '45', city: 'Delhi', country: 'India' },
+      ]
+    },
+    {
+      name: 'Burce', email: 'bruce@test.com', address: [
+        { hm: '101', city: 'Noida', country: 'India' },
+        { hm: '10', city: 'Gurgaon', country: 'India' },
+        { hm: '23', city: 'Noida', country: 'India' },
+        { hm: '45', city: 'Delhi', country: 'India' },
+      ]
+    },
+    {
+      name: 'Peter', email: 'peter@test.com', address: [
+        { hm: '101', city: 'Noida', country: 'India' },
+        { hm: '10', city: 'Gurgaon', country: 'India' },
+        { hm: '23', city: 'Noida', country: 'India' },
+        { hm: '45', city: 'Delhi', country: 'India' },
+      ]
+    },
+    {
+      name: 'Sam', email: 'sam@test.com', address: [
+        { hm: '101', city: 'Noida', country: 'India' },
+        { hm: '10', city: 'Gurgaon', country: 'India' },
+        { hm: '23', city: 'Noida', country: 'India' },
+        { hm: '45', city: 'Delhi', country: 'India' },
+      ]
+    },
+  ]
+
+  return (
+    <div style={{ display: 'flex', justifyContent: "center", alignItems: "center", height: "100vh", }}>
+      <h1>list the name </h1>
+      <br></br>
+      <Table border="1">
+        <thead>
+          <tr>
+            <td>name</td>
+            <td>password</td>
+            <td>email</td>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            users.map((iteam) =>
+              <tr key={iteam.name}>
+                <td>{iteam.name}</td>
+                <td>{iteam.password}</td>
+                <td>{iteam.email}</td>
+                {/* for nested tables */}
+                <td>
+                  {
+                    iteam.address.map((addIteam) =>
+                      <Table>
+                        <tbody>
+                          <tr>
+                            <td>{addIteam.hm}</td>
+                            <td>{addIteam.city}</td>
+                            <td>{addIteam.country}</td>
+                          </tr>
+                        </tbody>
+                      </Table>
+                    )
+                  }
+                </td>
+              </tr>
+            )
+          }
+        </tbody>
+      </Table>
+    </div>
+  )
+}
+
+export default User
