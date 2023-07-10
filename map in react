@@ -1,0 +1,24 @@
+//using map in react for showing the list it used for looping 
+
+import React, { useEffect, useState } from 'react'
+import AnatherUser from './AnatherUser'
+const User = () => {
+   const name=[
+    "jayesh",
+    "himanshu",
+    "dhanashree"
+   ]
+
+  return (
+    <div>
+       <h1>list the name </h1>
+       {
+        name.map((iteam)=>
+        <h1 key={iteam}>name is :{iteam}</h1>
+        )
+       }
+    </div>
+  )
+}
+
+export default User
