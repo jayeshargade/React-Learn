@@ -22,3 +22,51 @@ const User = () => {
 }
 
 export default User
+
+//adding multiple iteam in the list with table format
+
+import React, { useEffect, useState } from 'react'
+import AnatherUser from './AnatherUser'
+const User = () => {
+   const name=[
+    {
+      name:"jayesh", password:123,email:"jayeshargde07@gmail.com"
+    },
+    {
+      name:"himanshu", password:324,email:"himanshu@gmail.com"
+    },
+    {
+      name:"dhanshree", password:344,email:"dhanshree@gmail.com"
+    }
+   ]
+
+  return (
+    <div style={{display:'flex',justifyContent:"center",alignItems:"center",height:"100vh",}}>
+       <h1>list the name </h1>
+       <br></br>
+       <table border="1">
+        <thead>
+        <tr>
+          <td>name</td>
+          <td>password</td>
+          <td>email</td>
+        </tr>
+        </thead>
+        <tbody>
+       {
+        name.map((iteam)=>
+        <tr key={iteam.name}>
+         <td>{iteam.name}</td>
+         <td>{iteam.password}</td>
+         <td>{iteam.email}</td>
+        </tr>
+        )
+       }
+       </tbody>
+       </table>
+    </div>
+  )
+}
+
+export default User
+
