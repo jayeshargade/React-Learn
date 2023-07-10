@@ -1,0 +1,53 @@
+//main parent file 
+
+import React, { useEffect, useState } from 'react'
+import AnatherUser from './AnatherUser'
+const User = () => {
+    const[count,setCount]=useState(0)
+    const[data,setData ] =useState(100)
+    const hanelData=(data)=>{
+      setData(data+1)
+    }
+    const handelCount=(counter)=>{
+      setCount(counter+1)
+    }
+    useEffect(()=>{
+        console.warn(useEffect);
+    },[data])
+  return (
+    <div>
+        <h1>update counter={count}</h1>
+        <br></br>
+        <h1>update data={data}</h1>
+      <AnatherUser data={hanelData}  countnew={handelCount}/>
+    </div>
+  )
+}
+
+export default User
+
+
+// anather child file 
+import React, { useState } from 'react'
+
+const AnatherUser = ({data,countnew}) => {
+    const [cnt,setCnt]=useState(0)
+    const [updata,setUpData]=useState(100)
+    const handelCount=()=>{
+        setCnt(cnt+1)
+        countnew(cnt)
+    }
+    const handelData=()=>{
+      setUpData(updata+1)
+      data(updata)
+    }
+  return (
+    <div>
+      <button onClick={handelCount}>update count  </button>
+      <button onClick={handelData}>update Data </button>
+    </div>
+  )
+}
+
+export default AnatherUser
+
