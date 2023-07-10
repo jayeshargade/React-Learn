@@ -1,0 +1,37 @@
+//parent file 
+import React from 'react'
+import AnatherUser from './AnatherUser'
+import Table from 'react-bootstrap/Table';
+const User = () => {
+  
+  return (
+    <div>
+      <table>
+        <tbody>
+        <tr>
+          <AnatherUser/>
+        </tr>
+        </tbody> 
+      </table>
+    </div>
+
+  )
+}
+
+export default User
+
+//child file 
+import React from 'react'
+
+const AnatherUser = () => {
+
+   return(
+       <>
+        <td>jayesh</td>
+        <td>argade</td>
+       </>
+   )
+}
+
+export default AnatherUser
+
