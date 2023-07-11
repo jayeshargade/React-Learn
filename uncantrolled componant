@@ -1,0 +1,23 @@
+import React, { useRef} from 'react'
+// import AnatherUser from './AnatherUser';
+const User = () => {
+  let input1=useRef('')
+  const submit=(e)=>{
+    e.preventDefault()
+    console.warn(input1.current.value)
+    let input2=document.getElementById("in2").value
+    console.warn(input2);
+  }
+  return (
+   <div>
+    <form onSubmit={submit}>
+      <input type='text' ref={input1} ></input>
+      <input type='text' id='in2' ></input>
+      <button >submit</button>
+    </form>
+
+   </div>
+  )
+}
+
+export default User
