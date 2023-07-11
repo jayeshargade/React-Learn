@@ -1,0 +1,33 @@
+import React, { useMemo, useRef, useState } from 'react'
+import AnatherUser from './AnatherUser';
+const User = () => {
+  let inputRef=useRef(null);
+   const handleInput=()=>{
+    console.warn();
+    inputRef.current.value="1000"
+   }
+  return (
+   <div>
+    <AnatherUser ref={inputRef}/>
+    <button onClick={handleInput}>onClick</button>
+   </div>
+  )
+}
+
+export default User
+
+
+// child componant
+
+import React from 'react'
+import { forwardRef } from 'react'
+const AnatherUser = (props,ref) => {
+
+   return(
+       <div>
+        <input type='text' ref={ref}></input>
+       </div>
+   )
+}
+
+export default forwardRef(AnatherUser)
