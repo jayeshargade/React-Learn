@@ -1,0 +1,12 @@
+import React, { useMemo, useRef, useState } from 'react'
+// import AnatherUser from './AnatherUser';
+const User = () => {
+  const [val,setVal]=useState("")
+  return (
+   <div>
+    <input type='text' value={val} onChange={(e)=>setVal(e.target.value)}></input>
+   </div>
+  )
+}
+
+export default User
