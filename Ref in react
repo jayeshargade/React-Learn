@@ -1,0 +1,18 @@
+import React, { useMemo, useRef, useState } from 'react'
+const User = () => {
+  let inputRef=useRef(null);
+   const handleInput=()=>{
+    console.warn();
+    inputRef.current.value="1000"
+    inputRef.current.style.color="red"
+    inputRef.current.style.display="none"
+   }
+  return (
+   <div>
+    <input type='text' ref={inputRef} ></input>
+    <button onClick={handleInput}>onClick</button>
+   </div>
+  )
+}
+
+export default User
