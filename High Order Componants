@@ -1,0 +1,38 @@
+import React, { useRef, useState} from 'react'
+// import AnatherUser from './AnatherUser';
+const User = () => {
+ 
+  return (
+   <div>
+      <HOCred Comp={Counter}/>
+     <HOCblue Comp={Counter}/>
+   </div>
+  )
+}
+
+export default User
+const HOCred=({Comp})=>{
+    return(
+      <div style={{background:"Red"}}>
+       <Comp/>
+      </div>
+    )
+}
+const HOCblue=({Comp})=>{
+  return(
+    <div style={{background:"Blue"}}>
+     <Comp/>
+    </div>
+  )
+}
+const Counter=()=>{
+  const [count,setCount]=useState(0)
+
+
+  return (
+    <div>
+     <h1>count:{count}</h1>
+     <button onClick={()=>setCount(count+1)}>update</button>
+    </div>
+  )
+}
