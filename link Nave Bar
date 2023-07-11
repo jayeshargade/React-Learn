@@ -1,0 +1,17 @@
+import React from 'react'
+import { Link } from 'react-router-dom'
+const User = () => {
+
+  return (
+    <div>
+      <h1>this is first page</h1>
+      <h2>
+        React is a popular JavaScript library for building user interfaces.
+        It was developed by Facebook and released as an open-source project.
+        Here's some information about React:</h2>
+       <Link to="/AnatherUser">Anather page</Link>
+    </div>
+  )
+}
+
+export default User
