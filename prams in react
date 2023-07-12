@@ -1,0 +1,68 @@
+//Routing page  App.css
+
+import './App.css';
+import User from './User';
+import AnatherUser from './AnatherUser';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Page404 from './Page404';
+
+function App() {
+  return (
+    <div className="App">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<User />} />
+          <Route path="/AnatherUser/:name" element={<AnatherUser />} />
+          <Route path="/*" element={<Page404/>}/>
+        </Routes>
+      </BrowserRouter>
+    </div>
+  );
+}
+
+export default App;
+
+//first page 
+
+import React from 'react'
+import { Link } from 'react-router-dom'
+const User = () => {
+
+  return (
+    <div>
+      <h1>this is first page</h1>
+      <h2>
+        React is a popular JavaScript library for building user interfaces.
+        It was developed by Facebook and released as an open-source project.
+        Here's some information about React:</h2>
+        <li>
+       <Link to="/AnatherUser/piter">piter page</Link>
+       <Link to="/AnatherUser/jayesh">jayesh page</Link>
+       </li>
+    </div>
+  )
+}
+
+export default User
+
+//second page 
+
+import React from 'react'
+import { Link, useParams } from 'react-router-dom'
+const AnatherUser = () => {
+  const params=useParams();
+  const {name}=params;   // 
+  return (
+    <div>
+      <h1>this is {name} page </h1>
+      <Link to="/">Home</Link>
+    {/* <h1>this is {params.name} page </h1> */}  // we can also write this 
+      {
+        name ==="piter"? (<Link to="/AnatherUser/jayesh">jayesh page</Link>)
+        :(<Link to="/AnatherUser/piter">piter page</Link>)
+      }
+    </div>
+  )
+}
+export default AnatherUser
+
