@@ -1,0 +1,48 @@
+//app.js
+import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import User from './componant/User';
+import Anather from './componant/Anather';
+import NavBar from './componant/NavBar';
+
+function App() {
+  return (
+    <div className="App">
+      <BrowserRouter>
+      <NavBar/>
+        {/* <NavBar/> */}
+        <Routes>
+          <Route path="/" element={<User />} />
+          <Route path="/Anather" element={<Anather />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
+  );
+}
+
+export default App;
+
+
+//Nav bar page 
+
+import React from 'react'
+import { Link,NavLink } from 'react-router-dom'
+import '../componant/Home.css'
+const NavBar = () => {
+  return (
+    <div className='NavBar'>
+      <ul>  
+        <li>
+            <NavLink to={'/'} className={'Navlink'}>Home</NavLink>
+            </li>
+            <li>
+            <NavLink to={'/Anather'}className={'Navlink'}>AddressPage</NavLink>
+            </li>
+    
+      
+      </ul>
+    </div>
+  )
+}
+
+export default NavBar
