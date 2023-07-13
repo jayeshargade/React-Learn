@@ -1,0 +1,15 @@
+import React from 'react'
+import {useSearchParams} from 'react-router-dom'
+const User = () => {
+    const[searchParam,setSeachParam]=useSearchParams()
+    console.log(searchParam.get('age'))
+    const age=searchParam.get("age")
+  return (
+    <div>
+      <h1>this is first page </h1>
+      <h2>the age is:{age}</h2>
+    </div>
+  )
+}
+
+export default User
