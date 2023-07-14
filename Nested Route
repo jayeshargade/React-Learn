@@ -1,0 +1,53 @@
+//app.js where we wrapped all componant
+
+import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import User from './componant/User';
+import Anather from './componant/Anather';
+import NavBar from './componant/NavBar';
+import Company1 from './componant/Company1';
+import Company2 from './componant/Company2';
+import Company3 from './componant/Company3';
+function App() {
+  return (
+    <div className="App">
+      <BrowserRouter>
+      <NavBar/>
+        {/* <NavBar/> */}
+        <Routes>
+          <Route path="/" element={<User />} />
+          <Route path="/Anather/" element={<Anather />} >
+            <Route path='Company1' element={<Company1/>}/>
+            <Route path='Company2' element={<Company2/>}/>
+            <Route path='Company3' element={<Company3/>}/>
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </div>
+  );
+}
+
+export default App;
+
+
+// nestd route page 
+
+import React from 'react'
+import { NavLink, Outlet } from 'react-router-dom'
+
+const Anather = () => {
+  return (
+    <div>
+       <h1>this is second page </h1>
+       <NavLink to={"Company1"} className={'navLink'}> company1</NavLink>
+       <NavLink to={"Company2"} className={'navLink'}>company2</NavLink>
+       <NavLink to={"Company3"} className={'navLink'}>company3</NavLink>
+       <Outlet></Outlet>
+
+    </div>
+  )
+}
+
+export default Anather
+
+
