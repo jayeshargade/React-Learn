@@ -1,0 +1,20 @@
+import React from 'react'
+import { NavLink, Outlet, useLocation } from 'react-router-dom'
+
+const Anather = () => {
+  const location=useLocation();
+  console.log(location)
+  return (
+    <div>
+       <h1>this is second page </h1>
+       <NavLink to={"Company1"} className={'navLink'} state={{age:24, name:"jayesh argade"}}> company1</NavLink>
+       <NavLink to={"Company2"} className={'navLink'}>company2</NavLink>
+       <NavLink to={"Company3"} className={'navLink'}>company3</NavLink>
+       <Outlet></Outlet>
+
+    </div>
+  )
+}
+
+export default Anather
+
