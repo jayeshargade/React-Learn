@@ -1,0 +1,26 @@
+console.log("hii");
+let prpm= new Promise((resolve,reject)=>{
+    setTimeout(()=>{
+        console.log("it run after 5 sec");
+    },5000)
+    resolve(true)
+})
+console.log("hell0");
+
+let prpm2= new Promise((resolve,reject)=>{
+  
+    //reject(new Error("this is an error"))
+    resolve(true)
+})
+prpm.then(()=>{
+    console.log("succesfully run");
+})
+prpm2.catch(()=>{
+    console.log("some error is occured");
+})
+
+prpm2.then((value)=>{
+    console.log(value);
+},(error)=>{
+    console.log(error)
+})
