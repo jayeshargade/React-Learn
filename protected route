@@ -1,0 +1,62 @@
+//app js file routing 
+
+import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import User from './componant/User';
+import Anather from './componant/Anather';
+import NavBar from './componant/NavBar';
+import Company1 from './componant/Company1';
+import Company2 from './componant/Company2';
+import Company3 from './componant/Company3';
+import ProtectedLogin from './componant/ProtectedLogin';
+import Login from './componant/Login';
+function App() {
+  return (
+    <div className="App">
+      <BrowserRouter>
+      <NavBar/>
+        {/* <NavBar/> */}
+        <Routes>
+          <Route path="/" element={<ProtectedLogin Comp={User}/>} />  // here i use the hoc where i pass the home as a props 
+            <Route path="/Login" element={<Login />} />
+              <Route path="/Anather/" element={<Anather />}>
+              <Route path="Company1" element={<Company1 />} />
+              <Route path="Company2" element={<Company2 />} />
+              <Route path="Company3" element={<Company3 />} />
+              </Route>
+        </Routes>
+      </BrowserRouter>
+    </div>
+  );
+}
+
+export default App;
+
+
+//protected login componan
+
+
+import React, { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+
+
+const ProtectedLogin = (prop) => {
+    const {Comp}=prop
+    const nav=useNavigate()
+    useEffect(()=>{
+        let loginFlag=localStorage.getItem("login")    // use effect colled it inhoke first time when comp is render  and get the value in the local storage 
+        if(!loginFlag)                                  // also use the conditon here if value is not present then redirect to the login page 
+        nav("/Login")
+    });
+   
+  return (
+    <div>
+      <Comp/>
+    </div>
+  )
+}
+
+export default ProtectedLogin
+
+
+
