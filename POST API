@@ -17,7 +17,7 @@ const FormData = () => {
           },
           body:JSON.stringify(data)
         
-        }).then((res)=>res.json().then((value)=>console.log(value,"this is the value by api ")))
+        }).then((res)=>res.json().then((value)=>console.log(value,"this is the value by api ")))  // this line becose of the print the api data which is store in the api 
         
     }
   return (
