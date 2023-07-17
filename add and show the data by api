@@ -1,0 +1,100 @@
+import React, { useEffect, useState } from 'react'
+
+const User = () => {
+    const [data, setData] = useState([])
+    const [fname, setFname] = useState("")
+    const [lname, setLname] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    function fetchDataFromApi(){
+        fetch('http://localhost:4000/api/v1/users')
+        .then((res) => res.json()
+            .then((value) => {
+                console.log(value.data, "fetch data function");
+                setData(value.data)
+            }))
+    }
+    useEffect(() => {
+        fetchDataFromApi()
+        console.log("use effect ");
+    }, [])
+
+    const submitForm = () => {
+       
+        
+        let dataForApi = {
+        fname,lname,email,password
+        };
+        console.log(data, "data from the state");
+      
+        fetch('http://localhost:4000/api/v1/users/registration', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body:JSON.stringify(dataForApi)
+   
+        })
+        .then((res) => {
+            fetchDataFromApi()
+          if (res.ok) {
+            fetchDataFromApi()
+            console.log("when add the data it will call");
+          }
+           
+        else
+        throw new Error('Network response was not ok.');
+
+          return res.json();
+        })
+        .then((value) => {
+         // console.log(value, "this is the value from the API");
+        })
+        .catch((error) => {
+          console.error('Error occurred while fetching the API:', error);
+        });
+      };
+    
+    return (
+        <div className='body' style={{display:"flex",justifyContent:"center",alignItems:"center",height:"100vh"}}>
+            <div style={{paddingRight:"20px"}}>
+                <h1>form</h1><br />
+                <input type='text' placeholder='enter the first name ' value={fname} onChange={(e)=>setFname(e.target.value)} /><br /><br />
+                <input type='text' placeholder='enter the last name 'value={lname} onChange={(e)=>setLname(e.target.value)} /><br /><br />
+                <input type='text' placeholder='enter the email ' value={email} onChange={(e)=>setEmail(e.target.value)} /><br /><br />
+                <input type='text' placeholder='enter the passowrd' value={password} onChange={(e)=>setPassword(e.target.value)}/><br /><br />
+                <button onClick={submitForm}>submit</button>
+
+            </div>
+            <div className='tableClass'>
+                <h1>table</h1><br />
+                <table border={"1"}>
+                    <thead>
+                        <tr>
+                            <td>userID</td>
+                            <td>ID</td>
+                            <td>title</td>
+                            <td>completed</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            data.map((item, i) =>
+                                <tr key={i}>
+                                    <td>{item.fname}</td>
+                                    <td>{item.lname}</td>
+                                    <td>{item.email}</td>
+                                    <td>{item.passwords}</td>
+                                    
+                                </tr>
+                            )
+                        }
+                    </tbody>
+                </table>
+            </div>
+         </div>
+            )
+}
+
+            export default User
