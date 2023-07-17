@@ -1,0 +1,44 @@
+//app js file 
+
+import './App.css';
+import User from './User';
+import Prev from './Prev';
+import { useState } from 'react';
+function App() {
+  const[counter,setCounter]=useState(0)
+  const updateCounter=()=>{
+      setCounter((prev)=>{
+          let value=Math.floor(Math.random()*10)         //this is the only for getting the random value floor is used to get value in the decimal only        
+          return  value
+   } )
+  }
+  return (
+    <div className="App">
+     <Prev  count={counter}/>
+     <button onClick={updateCounter}>update</button>
+    </div>
+  );
+}
+
+export default App;
+
+//import React, { useEffect, useRef, useState } from 'react'
+
+const Prev = (props) => {
+    let lastVal=useRef();
+  useEffect(()=>{
+      lastVal.current=props.count;                                 // use ref is used to acces the value direct dom and bafore of update the useEffect it get the value 
+      console.log("use Effect ");                                   // and this value is store in the lastval varable 
+      console.log(lastVal.current,"value of the use effect");
+  })
+  console.warn(lastVal.current,'vlue from the ref');
+  return (
+    <div>
+      <h1>latest value:counter:{props.count}</h1>
+      <h1> prev value :counter:{lastVal.current}</h1>
+    </div>
+  )
+}
+
+export default Prev
+
