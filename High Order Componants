@@ -25,6 +25,8 @@ const HOCblue=({Comp})=>{
     </div>
   )
 }
+
+// this is the componant which we are passing as parameter to the hoc 
 const Counter=()=>{
   const [count,setCount]=useState(0)
 
